@@ -24,8 +24,8 @@ import { Register } from './app.entity';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
         autoLoadEntities: true,
-        synchronize: true, // Solo para desarrollo
-        // logging: true,
+        synchronize: true,
+        ssl: configService.get<string>('DB_SSL') === 'true',
       }),
     }),
   ],
