@@ -26,6 +26,14 @@ import { Register } from './app.entity';
         autoLoadEntities: true,
         synchronize: true,
         ssl: configService.get<string>('DB_SSL') === 'true',
+        extra: {
+          ssl:
+            process.env.DB_SSL === 'true'
+              ? {
+                  rejectUnauthorized: false,
+                }
+              : null,
+        },
       }),
     }),
   ],
